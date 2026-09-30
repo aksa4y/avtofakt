@@ -15,6 +15,7 @@ const toggleTheme = () => {
   if (import.meta.client) localStorage.setItem('avtofakt-theme', colorMode.value)
   document.documentElement.classList.toggle('light-mode', colorMode.value === 'light')
 }
+const scrollToCatalog = () => document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' })
 onMounted(() => {
   const saved = localStorage.getItem('avtofakt-theme')
   if (saved === 'light') { colorMode.value = 'light'; document.documentElement.classList.add('light-mode') }
@@ -57,7 +58,7 @@ const crumbs = [{ name:'Главная', href:'/' }, { name:'СТО Минска
       <div v-else-if="!pending" class="panel mt-5 rounded-3xl px-6 py-14 text-center"><div class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-white/5 text-muted"><SlidersHorizontal class="h-7 w-7"/></div><h3 class="mt-5 font-display text-xl font-bold">Ничего не нашлось</h3><p class="mx-auto mt-2 max-w-sm text-sm leading-6 text-muted">Попробуйте изменить запрос или снять часть фильтров — подходящий сервис может быть рядом.</p><button class="mt-5 rounded-xl bg-lime px-5 py-3 text-sm font-bold text-ink" @click="reset">Сбросить фильтры</button></div>
     </section>
     <footer id="about" class="mx-auto mt-16 max-w-[1440px] border-t border-line px-4 py-8 text-sm text-muted sm:px-6 lg:px-10"><div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><span>© 2026 Автофакт · Каталог автосервисов Минска</span><a id="add" href="mailto:hello@avtofakt.by" class="hover:text-white">Добавить или обновить СТО</a></div></footer>
-    <Transition name="fade"><a v-if="activeCount" href="#catalog" class="fixed bottom-4 left-4 right-4 z-20 hidden h-12 items-center justify-center gap-2 rounded-xl bg-lime font-bold text-ink shadow-2xl sm:hidden" @click.prevent="document.getElementById('catalog')?.scrollIntoView({behavior:'smooth'})"><SlidersHorizontal class="h-4 w-4"/>Фильтры · {{ activeCount }}</a></Transition>
+    <Transition name="fade"><a v-if="activeCount" href="#catalog" class="fixed bottom-4 left-4 right-4 z-20 hidden h-12 items-center justify-center gap-2 rounded-xl bg-lime font-bold text-ink shadow-2xl sm:hidden" @click.prevent="scrollToCatalog"><SlidersHorizontal class="h-4 w-4"/>Фильтры · {{ activeCount }}</a></Transition>
   </main>
 </template>
 
