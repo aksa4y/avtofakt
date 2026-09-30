@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'ru' },
       meta: [
-        { name: 'theme-color', content: '#0b0d10' },
+        { name: 'theme-color', content: '#101112' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
       ],
     },
@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     ],
   },
   tailwindcss: { config: { theme: { extend: { colors: {
-    ink: '#0b0d10', panel: '#111419', raised: '#181c22', line: '#292e36', muted: '#9aa3af',
-    lime: '#c5f36b', amber: '#f5b942', danger: '#ff7777', success: '#78dba2',
+    ink: '#101112', panel: '#17191a', raised: '#202223', line: '#343738', muted: '#a8aaa8',
+    orange: '#ef5b2a', amber: '#e7a24c', danger: '#e76b63', success: '#82b58b',
   } } } } },
 })
