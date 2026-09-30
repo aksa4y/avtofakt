@@ -23,13 +23,13 @@ const districtOptions = Object.entries(DISTRICT_LABELS) as [District, string][]
         <div>
           <p class="mb-2 text-xs font-bold uppercase tracking-[.16em] text-muted">Услуги</p>
           <div class="flex flex-wrap gap-2">
-          <button v-for="([key, label]) in serviceOptions" :key="key" class="rounded-md border px-3 py-2 text-sm transition" :class="service.includes(key) ? 'border-orange bg-orange text-white' : 'border-line bg-raised text-gray-300 hover:border-gray-500'" :aria-pressed="service.includes(key)" @click="emit('toggleService', key)">{{ label }}</button>
+          <button v-for="([key, label]) in serviceOptions" :key="key" class="rounded-md border px-3 py-2 text-sm transition" :class="service.includes(key) ? 'border-orange bg-orange text-ink' : 'border-line bg-raised text-gray-300 hover:border-gray-500'" :aria-pressed="service.includes(key)" @click="emit('toggleService', key)">{{ label }}</button>
           </div>
         </div>
         <div>
           <p class="mb-2 text-xs font-bold uppercase tracking-[.16em] text-muted">Район</p>
           <div class="flex flex-wrap gap-2">
-            <button v-for="([key, label]) in districtOptions" :key="key" class="rounded-md border px-3 py-2 text-sm transition" :class="district.includes(key) ? 'border-orange bg-orange text-white' : 'border-line bg-raised text-gray-300 hover:border-gray-500'" :aria-pressed="district.includes(key)" @click="emit('toggleDistrict', key)">{{ label }}</button>
+            <button v-for="([key, label]) in districtOptions" :key="key" class="rounded-md border px-3 py-2 text-sm transition" :class="district.includes(key) ? 'border-orange bg-orange text-ink' : 'border-line bg-raised text-gray-300 hover:border-gray-500'" :aria-pressed="district.includes(key)" @click="emit('toggleDistrict', key)">{{ label }}</button>
           </div>
         </div>
         <button v-if="activeCount" class="inline-flex items-center gap-1 self-end pb-2 text-sm text-muted hover:text-white" @click="emit('reset')"><X class="h-4 w-4" />Сбросить <span class="text-orange">{{ activeCount }}</span></button>
@@ -44,9 +44,9 @@ const districtOptions = Object.entries(DISTRICT_LABELS) as [District, string][]
       <div v-if="showMobile" class="fixed inset-0 z-50 flex items-end bg-black/65 md:hidden" @click.self="showMobile = false">
         <section role="dialog" aria-modal="true" aria-labelledby="filter-title" class="max-h-[88dvh] w-full overflow-y-auto rounded-t-3xl border border-line bg-panel p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] soft-shadow">
           <div class="mb-6 flex items-center justify-between"><h2 id="filter-title" class="font-display text-2xl font-semibold">Фильтры <span v-if="activeCount" class="text-orange">({{ activeCount }})</span></h2><button class="rounded-md p-2 text-muted hover:text-white" aria-label="Закрыть фильтры" @click="showMobile = false"><X class="h-5 w-5" /></button></div>
-          <p class="mb-3 text-xs font-bold uppercase tracking-[.16em] text-muted">Услуги</p><div class="mb-6 flex flex-wrap gap-2"><button v-for="([key,label]) in serviceOptions" :key="key" class="rounded-md border px-3 py-2 text-sm" :class="service.includes(key)?'border-orange bg-orange text-white':'border-line bg-raised text-gray-300'" :aria-pressed="service.includes(key)" @click="emit('toggleService',key)">{{ label }}</button></div>
-          <p class="mb-3 text-xs font-bold uppercase tracking-[.16em] text-muted">Район</p><div class="mb-7 flex flex-wrap gap-2"><button v-for="([key,label]) in districtOptions" :key="key" class="rounded-md border px-3 py-2 text-sm" :class="district.includes(key)?'border-orange bg-orange text-white':'border-line bg-raised text-gray-300'" :aria-pressed="district.includes(key)" @click="emit('toggleDistrict',key)">{{ label }}</button></div>
-          <div class="flex gap-3"><button class="h-12 flex-1 rounded-lg border border-line font-semibold" @click="emit('reset')">Сбросить</button><button class="h-12 flex-[1.4] rounded-lg bg-orange font-bold text-white" @click="showMobile = false">Показать сервисы</button></div>
+          <p class="mb-3 text-xs font-bold uppercase tracking-[.16em] text-muted">Услуги</p><div class="mb-6 flex flex-wrap gap-2"><button v-for="([key,label]) in serviceOptions" :key="key" class="rounded-md border px-3 py-2 text-sm" :class="service.includes(key)?'border-orange bg-orange text-ink':'border-line bg-raised text-gray-300'" :aria-pressed="service.includes(key)" @click="emit('toggleService',key)">{{ label }}</button></div>
+          <p class="mb-3 text-xs font-bold uppercase tracking-[.16em] text-muted">Район</p><div class="mb-7 flex flex-wrap gap-2"><button v-for="([key,label]) in districtOptions" :key="key" class="rounded-md border px-3 py-2 text-sm" :class="district.includes(key)?'border-orange bg-orange text-ink':'border-line bg-raised text-gray-300'" :aria-pressed="district.includes(key)" @click="emit('toggleDistrict',key)">{{ label }}</button></div>
+          <div class="flex gap-3"><button class="h-12 flex-1 rounded-lg border border-line font-semibold" @click="emit('reset')">Сбросить</button><button class="h-12 flex-[1.4] rounded-lg bg-orange font-bold text-ink" @click="showMobile = false">Показать сервисы</button></div>
         </section>
       </div>
     </Teleport>

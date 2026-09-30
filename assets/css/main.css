@@ -46,7 +46,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .light-mode .bg-raised { background-color: var(--raised); }
 .light-mode .border-line { border-color: var(--border); }
 .light-mode .text-white { color: var(--copy); }
-.light-mode .bg-orange.text-white, .light-mode .absolute .text-white { color: #fff; }
+.light-mode .absolute .text-white { color: #fff; }
 .light-mode .text-gray-300 { color: #424441; }
 .light-mode .text-muted { color: var(--muted-copy); }
 .light-mode .panel { background: var(--surface); border-color: var(--border); }

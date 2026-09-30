@@ -45,7 +45,7 @@ const mapLink = mapsUrl(address)
     </div>
 
     <div class="mt-auto grid grid-cols-2 gap-2 pt-5">
-      <a :href="`tel:${station.phone.replace(/[^+\d]/g, '')}`" class="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-orange px-3 text-sm font-bold text-white transition hover:bg-orange/90">
+      <a :href="`tel:${station.phone.replace(/[^+\d]/g, '')}`" class="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-orange px-3 text-sm font-bold text-ink transition hover:bg-orange/90">
         <Phone class="h-4 w-4" />Позвонить
       </a>
       <a :href="mapLink" target="_blank" rel="noopener noreferrer" class="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-line px-3 text-sm font-semibold text-gray-300 transition hover:border-white/30 hover:text-white">
