@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { filterStations } from '~/utils/stations'
+// Recreate page-scoped metadata and ItemList when pagination changes on the client.
+definePageMeta({ key: (route) => route.fullPath })
 const { data, error, refresh } = await useStations()
 const route = useRoute()
 const store = useFiltersStore()
