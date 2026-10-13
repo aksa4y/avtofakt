@@ -97,14 +97,19 @@ export default defineNuxtConfig({
     ],
   },
   fonts: {
+    // Fonts are bundled locally; do not fetch remote font metrics during builds.
+    defaults: { fallbacks: { 'sans-serif': [], serif: [], monospace: [] } },
     providers: {
       google: false,
+      googleicons: false,
+      npm: false,
       bunny: false,
       fontshare: false,
       fontsource: false,
       adobe: false,
     },
     families: [
+      { name: 'Manrope Variable', provider: 'none' },
       {
         name: 'Avtofakt Sans',
         src: '/fonts/Inter-400.ttf',
