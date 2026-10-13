@@ -1,5 +1,6 @@
 import type { Review } from '../../types/review'
 export async function readReviews(stationSlug: string, includePending = false) {
+  if (!useRuntimeConfig().persistentReviews) return []
   const storage = useStorage('reviews')
   const keys = await storage.getKeys(stationSlug)
   const items = await Promise.all(

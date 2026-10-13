@@ -1,6 +1,9 @@
 import { env } from './env'
 import { cities } from './shared/cities'
 import tailwindcss from '@tailwindcss/vite'
+const isVercel =
+  process.env.VERCEL === '1' || process.env.NITRO_PRESET === 'vercel'
+const pageCache = isVercel ? { isr: 3600 } : { swr: 3600 }
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
@@ -46,14 +49,19 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
+    persistentReviews: !isVercel,
     reviewAdminToken: env.NUXT_REVIEW_ADMIN_TOKEN || '',
     contactEmail: env.NUXT_CONTACT_EMAIL || '',
     trustProxy: env.NUXT_TRUST_PROXY === 'true',
     public: { siteUrl: env.NUXT_PUBLIC_SITE_URL },
   },
   nitro: {
-    preset: 'node-server',
-    storage: { reviews: { driver: 'fs', base: './.data/reviews' } },
+    preset: isVercel ? 'vercel' : 'node-server',
+    storage: {
+      reviews: isVercel
+        ? { driver: 'memory' }
+        : { driver: 'fs', base: './.data/reviews' },
+    },
     compressPublicAssets: true,
     prerender: { crawlLinks: false },
   },
@@ -63,9 +71,9 @@ export default defineNuxtConfig({
       cities.map((city) => [`/${city.slug}`, { prerender: true }]),
     ),
     '/index.php': { redirect: { to: '/', statusCode: 301 } },
-    '/stations/**': { swr: 3600 },
-    '/blog/**': { swr: 3600 },
-    '/api/stations': { cors: true, swr: 3600 },
+    '/stations/**': pageCache,
+    '/blog/**': pageCache,
+    '/api/stations': { cors: true, ...pageCache },
     '/images/**': { headers: { 'cache-control': 'public, max-age=604800' } },
     '/_nuxt/**': {
       headers: { 'cache-control': 'public, max-age=31536000, immutable' },
@@ -133,6 +141,10 @@ export default defineNuxtConfig({
       logo: '/favicon.svg',
     },
   },
-  image: { format: ['webp', 'avif'] },
+  image: {
+    provider: isVercel ? 'vercel' : 'ipx',
+    quality: 75,
+    format: ['webp', 'avif'],
+  },
   features: { inlineStyles: true },
 })

@@ -3,7 +3,8 @@ import type { H3Event } from 'h3'
 export function authorizeReviews(event: H3Event) {
   setHeader(event, 'Cache-Control', 'no-store')
   setHeader(event, 'X-Robots-Tag', 'noindex')
-  const expected = useRuntimeConfig(event).reviewAdminToken
+  const config = useRuntimeConfig(event)
+  const expected = config.persistentReviews ? config.reviewAdminToken : ''
   const given = getHeader(event, 'authorization')?.replace(/^Bearer /, '') || ''
   if (
     !expected ||

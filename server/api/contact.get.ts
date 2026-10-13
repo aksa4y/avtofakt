@@ -4,6 +4,6 @@ export default defineEventHandler((event) => {
   const config = useRuntimeConfig(event)
   return {
     email: config.contactEmail || null,
-    reviewsEnabled: !!config.reviewAdminToken,
+    reviewsEnabled: !!config.reviewAdminToken && config.persistentReviews,
   }
 })

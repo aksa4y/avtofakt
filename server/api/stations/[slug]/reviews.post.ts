@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
   setHeader(event, 'Cache-Control', 'no-store')
   setHeader(event, 'X-Robots-Tag', 'noindex')
   const config = useRuntimeConfig(event)
-  if (!config.reviewAdminToken)
+  if (!config.reviewAdminToken || !config.persistentReviews)
     throw createError({
       statusCode: 503,
       statusMessage: 'Review moderation is not configured',
