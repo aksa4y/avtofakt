@@ -81,6 +81,16 @@ try {
     console.log('PASS', path)
   }
   const stations = await (await fetch(origin + '/api/stations')).json()
+  const payload = await fetch(origin + '/stations/_payload.json', {
+    headers: { 'Accept-Encoding': 'gzip' },
+  })
+  assert.equal(payload.status, 200)
+  assert.equal(
+    payload.headers.get('content-encoding'),
+    'gzip',
+    'compressed Nuxt payload',
+  )
+  assert.ok(Array.isArray(await payload.json()))
   for (const encoding of ['gzip', 'identity', 'gzip;q=0']) {
     const response = await fetch(origin + '/stations', {
       headers: { 'Accept-Encoding': encoding },

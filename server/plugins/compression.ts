@@ -5,14 +5,16 @@ const compress = promisify(gzip)
 
 export default defineNitroPlugin((nitro) => {
   nitro.hooks.hook('beforeResponse', async (event, response) => {
-    // Compress public HTML after route caching, independently for each request.
+    // Compress public HTML and Nuxt payloads after route caching, per request.
     // API responses and already compressed/static content are left to their handlers.
     if (
       event.method === 'HEAD' ||
       typeof response.body !== 'string' ||
       response.body.length < 1024 ||
-      !String(getResponseHeader(event, 'content-type')).startsWith(
-        'text/html',
+      !(
+        String(getResponseHeader(event, 'content-type')).startsWith(
+          'text/html',
+        ) || getRequestURL(event).pathname.endsWith('/_payload.json')
       ) ||
       getResponseHeader(event, 'content-encoding')
     )
