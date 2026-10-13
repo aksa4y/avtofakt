@@ -1,38 +1,34 @@
-export type Service = 'remont' | 'diagnostika' | 'shinomontazh' | 'autoelektrika'
-export type District = 'center' | 'frunzensky' | 'partizansky' | 'moskovsky' | 'sovetsky' | 'leninsky'
-export type PriceLevel = 1 | 2 | 3
-
+export const connectors = ['Type 2', 'CCS', 'CHAdeMO', 'GB/T'] as const
+export type Connector = (typeof connectors)[number]
 export interface Station {
   id: string
+  slug: string
   name: string
-  shortName: string
-  services: Service[]
-  district: District
+  operator: string
+  city: string
   address: string
-  phone: string
-  hours: { open: string; close: string; days: number[] }
-  rating: number
-  reviewCount: number
-  price: PriceLevel
-  latitude: number
-  longitude: number
-  verified: boolean
+  lat: number
+  lng: number
+  connectors: Connector[]
+  power: number | null
+  hours: string | null
+  payment: 'paid' | 'free' | 'unknown'
+  status: 'available' | 'busy' | 'offline' | 'unknown'
+  price: number | null
+  source: string
+  updatedAt: string
+  photo: string | null
 }
-
-export interface Filters {
-  service: Service[]
-  district: District[]
+export interface StationFilters {
   q: string
-  sort: 'rating' | 'reviews' | 'price' | 'name' | 'distance'
-  page: number
-  lat?: number
-  lng?: number
+  city: string
+  connector: string
+  minPower: number
+  payment: string
+  status: string
 }
-
-export const SERVICE_LABELS: Record<Service, string> = {
-  remont: 'Ремонт', diagnostika: 'Диагностика', shinomontazh: 'Шиномонтаж', autoelektrika: 'Автоэлектрика',
-}
-export const DISTRICT_LABELS: Record<District, string> = {
-  center: 'Центральный', frunzensky: 'Фрунзенский', partizansky: 'Партизанский',
-  moskovsky: 'Московский', sovetsky: 'Советский', leninsky: 'Ленинский',
+export interface StationResponse {
+  stations: Station[]
+  updatedAt: string
+  source: string
 }

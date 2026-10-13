@@ -1,54 +1,66 @@
 <script setup lang="ts">
-import { Search, SlidersHorizontal, X } from 'lucide-vue-next'
-import { DISTRICT_LABELS, SERVICE_LABELS, type District, type Service } from '~/types/station'
-defineProps<{ service: Service[]; district: District[]; activeCount: number; q: string }>()
-const emit = defineEmits<{ toggleService: [Service]; toggleDistrict: [District]; updateQuery: [string]; reset: [] }>()
-const showMobile = ref(false)
-const serviceOptions = Object.entries(SERVICE_LABELS) as [Service, string][]
-const districtOptions = Object.entries(DISTRICT_LABELS) as [District, string][]
+import { Search, SlidersHorizontal, RotateCcw } from 'lucide-vue-next'
+import { connectors } from '~/types/station'
+import { cities } from '~/shared/cities'
+const store = useFiltersStore()
+defineProps<{ hideCity?: boolean }>()
 </script>
-
 <template>
-  <div class="sticky top-0 z-30 -mx-4 border-y border-line bg-ink/95 px-4 py-3 md:static md:mx-0 md:rounded-xl md:border md:bg-panel md:p-5">
-    <div class="flex gap-2 md:hidden">
-      <label class="relative min-w-0 flex-1">
-        <Search class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" aria-hidden="true" />
-        <input :value="q" aria-label="Поиск по названию СТО" placeholder="Название сервиса" class="h-11 w-full rounded-xl border border-line bg-raised pl-9 pr-3 text-sm text-white placeholder:text-muted" @input="emit('updateQuery', ($event.target as HTMLInputElement).value)" />
-      </label>
-      <button class="flex h-11 items-center gap-2 rounded-xl border border-line bg-raised px-3 text-sm font-semibold" :aria-label="`Открыть фильтры, выбрано ${activeCount}`" @click="showMobile = true"><SlidersHorizontal class="h-4 w-4" />Фильтры<span v-if="activeCount" class="grid h-5 min-w-5 place-items-center rounded-full bg-orange px-1 text-xs text-ink">{{ activeCount }}</span></button>
+  <div class="filters">
+    <div class="search-field">
+      <Search :size="19" /><label class="sr-only" for="station-search"
+        >Название или адрес станции</label
+      ><input
+        id="station-search"
+        v-model="store.q"
+        type="search"
+        placeholder="Город, адрес или название станции"
+        autocomplete="off"
+      />
     </div>
-
-    <div class="hidden md:block">
-      <div class="grid gap-5 lg:grid-cols-[1fr_1.2fr_auto] lg:items-end">
-        <div>
-          <p class="mb-2 text-xs font-bold uppercase tracking-[.16em] text-muted">Услуги</p>
-          <div class="flex flex-wrap gap-2">
-          <button v-for="([key, label]) in serviceOptions" :key="key" class="rounded-md border px-3 py-2 text-sm transition" :class="service.includes(key) ? 'border-orange bg-orange text-ink' : 'border-line bg-raised text-gray-300 hover:border-gray-500'" :aria-pressed="service.includes(key)" @click="emit('toggleService', key)">{{ label }}</button>
-          </div>
-        </div>
-        <div>
-          <p class="mb-2 text-xs font-bold uppercase tracking-[.16em] text-muted">Район</p>
-          <div class="flex flex-wrap gap-2">
-            <button v-for="([key, label]) in districtOptions" :key="key" class="rounded-md border px-3 py-2 text-sm transition" :class="district.includes(key) ? 'border-orange bg-orange text-ink' : 'border-line bg-raised text-gray-300 hover:border-gray-500'" :aria-pressed="district.includes(key)" @click="emit('toggleDistrict', key)">{{ label }}</button>
-          </div>
-        </div>
-        <button v-if="activeCount" class="inline-flex items-center gap-1 self-end pb-2 text-sm text-muted hover:text-white" @click="emit('reset')"><X class="h-4 w-4" />Сбросить <span class="text-orange">{{ activeCount }}</span></button>
-      </div>
-      <label class="relative mt-5 block max-w-md">
-        <Search class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" aria-hidden="true" />
-        <input :value="q" aria-label="Поиск по названию СТО" placeholder="Найти сервис по названию" class="h-11 w-full rounded-lg border border-line bg-raised pl-9 pr-3 text-sm text-white placeholder:text-muted" @input="emit('updateQuery', ($event.target as HTMLInputElement).value)" />
-      </label>
+    <div class="filter-grid">
+      <label v-if="!hideCity"
+        >Город<select v-model="store.city">
+          <option value="">Вся Беларусь</option>
+          <option v-for="c in cities" :key="c.slug" :value="c.slug">
+            {{ c.name }}
+          </option>
+        </select></label
+      ><label
+        >Разъём<select v-model="store.connector">
+          <option value="">Все разъёмы</option>
+          <option v-for="c in connectors" :key="c">{{ c }}</option>
+        </select></label
+      ><label
+        >Мощность<select v-model.number="store.minPower">
+          <option :value="0">Любая мощность</option>
+          <option :value="22">От 22 кВт</option>
+          <option :value="50">От 50 кВт</option>
+          <option :value="100">От 100 кВт</option>
+          <option :value="150">От 150 кВт</option>
+        </select></label
+      ><label
+        >Оплата<select v-model="store.payment">
+          <option value="">Любая</option>
+          <option value="paid">Платная</option>
+          <option value="free">Бесплатная</option>
+          <option value="unknown">Не указана</option>
+        </select></label
+      ><label
+        >Статус<select v-model="store.status">
+          <option value="">Все станции</option>
+          <option value="unknown">Нет live-данных</option>
+          <option value="available">Свободна</option>
+          <option value="busy">Занята</option>
+          <option value="offline">Недоступна</option>
+        </select></label
+      ><button class="reset-button" @click="store.$reset()">
+        <RotateCcw :size="16" /><span>Сбросить</span>
+      </button>
     </div>
-
-    <Teleport to="body">
-      <div v-if="showMobile" class="fixed inset-0 z-50 flex items-end bg-black/65 md:hidden" @click.self="showMobile = false">
-        <section role="dialog" aria-modal="true" aria-labelledby="filter-title" class="max-h-[88dvh] w-full overflow-y-auto rounded-t-3xl border border-line bg-panel p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] soft-shadow">
-          <div class="mb-6 flex items-center justify-between"><h2 id="filter-title" class="font-display text-2xl font-semibold">Фильтры <span v-if="activeCount" class="text-orange">({{ activeCount }})</span></h2><button class="rounded-md p-2 text-muted hover:text-white" aria-label="Закрыть фильтры" @click="showMobile = false"><X class="h-5 w-5" /></button></div>
-          <p class="mb-3 text-xs font-bold uppercase tracking-[.16em] text-muted">Услуги</p><div class="mb-6 flex flex-wrap gap-2"><button v-for="([key,label]) in serviceOptions" :key="key" class="rounded-md border px-3 py-2 text-sm" :class="service.includes(key)?'border-orange bg-orange text-ink':'border-line bg-raised text-gray-300'" :aria-pressed="service.includes(key)" @click="emit('toggleService',key)">{{ label }}</button></div>
-          <p class="mb-3 text-xs font-bold uppercase tracking-[.16em] text-muted">Район</p><div class="mb-7 flex flex-wrap gap-2"><button v-for="([key,label]) in districtOptions" :key="key" class="rounded-md border px-3 py-2 text-sm" :class="district.includes(key)?'border-orange bg-orange text-ink':'border-line bg-raised text-gray-300'" :aria-pressed="district.includes(key)" @click="emit('toggleDistrict',key)">{{ label }}</button></div>
-          <div class="flex gap-3"><button class="h-12 flex-1 rounded-lg border border-line font-semibold" @click="emit('reset')">Сбросить</button><button class="h-12 flex-[1.4] rounded-lg bg-orange font-bold text-ink" @click="showMobile = false">Показать сервисы</button></div>
-        </section>
-      </div>
-    </Teleport>
+    <p class="filter-hint">
+      <SlidersHorizontal :size="13" /> Фильтры учитывают только сведения,
+      указанные в источнике.
+    </p>
   </div>
 </template>
