@@ -77,7 +77,12 @@ useSchemaOrg([
       Ошибка загрузки. <button @click="refresh()">Повторить</button>
     </div>
     <div v-else-if="visible.length" class="station-grid">
-      <StationCard v-for="s in visible" :key="s.id" :station="s" />
+      <StationCard
+        v-for="s in visible"
+        :key="s.id"
+        :station="s"
+        :heading-level="2"
+      />
     </div>
     <div v-else class="empty-state">
       <h2>Станции не найдены</h2>

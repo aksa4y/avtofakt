@@ -117,7 +117,7 @@ svg {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 650;
   letter-spacing: 0.16em;
   line-height: 1.6;
@@ -265,7 +265,7 @@ svg {
   gap: 6px;
   align-items: center;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
 }
 .mobile-menu,
 .mobile-nav {
@@ -307,7 +307,7 @@ svg {
 .hero .eyebrow {
   color: #c0ccc0;
   margin-bottom: 25px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .live-dot {
   display: inline-block;
@@ -341,7 +341,7 @@ svg {
   display: flex;
   gap: 25px;
   margin-top: 44px;
-  font-size: 10px;
+  font-size: 12px;
   color: #bdc7bd;
 }
 .hero-benefits span {
@@ -356,7 +356,7 @@ svg {
   position: absolute;
   right: 40px;
   bottom: 30px;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   color: #b2bbb2;
   display: flex;
@@ -390,7 +390,7 @@ svg {
   font-weight: 550;
 }
 .stats-strip span {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.6;
   color: var(--muted);
   max-width: 85px;
@@ -462,7 +462,7 @@ input::placeholder {
   flex: 1;
   flex-direction: column;
   gap: 5px;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   letter-spacing: 0.03em;
   min-width: 0;
@@ -475,7 +475,7 @@ input[type='number'] {
   border-radius: 7px;
   padding: 10px 12px;
   min-height: 43px;
-  font-size: 11px;
+  font-size: 12px;
   max-width: 100%;
 }
 select {
@@ -489,14 +489,14 @@ select {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 10px;
+  font-size: 12px;
   padding: 0 5px;
 }
 .filter-hint {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   margin: 12px 0 0;
 }
@@ -528,7 +528,7 @@ select {
   background: radial-gradient(ellipse at center, #203322, var(--surface));
 }
 .map-placeholder small {
-  font-size: 11px;
+  font-size: 12px;
 }
 .map-loader {
   width: 35px;
@@ -572,7 +572,7 @@ select {
   min-width: 185px;
 }
 .leaflet-popup-content p {
-  font-size: 11px;
+  font-size: 12px;
   margin: 7px 0;
 }
 .map-tools {
@@ -593,7 +593,7 @@ select {
   border-radius: 7px;
   background: #fff;
   color: #172015;
-  font-size: 10px;
+  font-size: 12px;
   box-shadow: 0 3px 10px #0002;
 }
 .map-legend {
@@ -608,7 +608,7 @@ select {
   align-items: center;
   gap: 7px;
   border-radius: 6px;
-  font-size: 9px;
+  font-size: 12px;
   box-shadow: 0 3px 10px #0002;
 }
 .legend-dot {
@@ -647,12 +647,12 @@ select {
   padding: 4px 7px;
   border-radius: 5px;
   background: var(--surface-2);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   letter-spacing: 0;
 }
 .results-heading p {
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   margin: 0;
 }
@@ -693,7 +693,7 @@ select {
   color: #496923;
 }
 .operator-name {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 .status-dot {
@@ -709,7 +709,7 @@ select {
   justify-content: space-between;
   gap: 10px;
 }
-.station-title h3 {
+.station-title :is(h2, h3) {
   font-size: 18px;
   line-height: 1.4;
   margin-bottom: 8px;
@@ -720,7 +720,7 @@ select {
 .station-address {
   display: flex;
   gap: 5px;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   min-height: 34px;
   align-items: start;
@@ -740,7 +740,7 @@ select {
   letter-spacing: -0.04em;
 }
 .station-spec span {
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   text-align: right;
 }
@@ -755,7 +755,7 @@ select {
   align-items: center;
   gap: 4px;
   padding: 4px 8px;
-  font-size: 9px;
+  font-size: 12px;
   border: 1px solid var(--line);
   border-radius: 5px;
 }
@@ -766,7 +766,7 @@ select {
   border-top: 1px solid var(--line);
   padding-top: 13px;
   margin-top: 19px;
-  font-size: 8px;
+  font-size: 12px;
   color: var(--muted);
 }
 .station-bottom > span:first-child {
@@ -790,7 +790,7 @@ select {
   font-size: 12px;
 }
 .pagination span {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
 }
 .city-section {
@@ -831,7 +831,7 @@ select {
 }
 .city-grid small {
   display: block;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   margin-top: 4px;
   font-weight: 400;
@@ -875,7 +875,7 @@ select {
   padding: 0;
 }
 .journey-steps > div > span {
-  font-size: 10px;
+  font-size: 12px;
   color: #a9b6a4;
 }
 .journey-steps svg {
@@ -886,7 +886,7 @@ select {
   margin: 0;
 }
 .journey-steps small {
-  font-size: 10px;
+  font-size: 12px;
   color: #a9b6a4;
 }
 .calculator {
@@ -908,7 +908,7 @@ select {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
 }
 .calculator-fields input {
@@ -919,7 +919,7 @@ select {
 }
 .calculator-caption {
   grid-column: 1/-1;
-  font-size: 10px;
+  font-size: 12px;
   margin: 0;
 }
 .calculator-result {
@@ -928,7 +928,7 @@ select {
   padding: 36px;
 }
 .calculator-result .eyebrow {
-  font-size: 10px;
+  font-size: 12px;
 }
 .big-price {
   font-size: 70px;
@@ -943,7 +943,7 @@ select {
   letter-spacing: 0;
 }
 .calculator-result > p:not(.big-price) {
-  font-size: 11px;
+  font-size: 12px;
 }
 .comparison {
   border-top: 1px solid #42602144;
@@ -956,7 +956,7 @@ select {
   justify-content: space-between;
   gap: 15px;
   margin: 11px 0;
-  font-size: 11px;
+  font-size: 12px;
 }
 .comparison > div:last-child {
   font-weight: 700;
@@ -1029,7 +1029,7 @@ select {
   justify-content: space-between;
   gap: 10px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   margin: 17px 0 12px;
 }
 .article-card h3,
@@ -1042,7 +1042,7 @@ select {
   font-size: 12px;
 }
 .article-card .text-link {
-  font-size: 11px;
+  font-size: 12px;
 }
 .faq-section {
   display: grid;
@@ -1101,7 +1101,7 @@ details > p {
 }
 .footer-top p {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.8;
   margin-top: 20px;
 }
@@ -1109,7 +1109,7 @@ details > p {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  font-size: 11px;
+  font-size: 12px;
 }
 .footer-top nav a {
   display: flex;
@@ -1118,7 +1118,7 @@ details > p {
 }
 .footer-note .eyebrow {
   color: var(--muted);
-  font-size: 8px;
+  font-size: 12px;
 }
 .footer-note {
   padding-top: 4px;
@@ -1130,7 +1130,7 @@ details > p {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  font-size: 8px;
+  font-size: 12px;
   color: var(--muted);
 }
 .footer-bottom a {
@@ -1143,7 +1143,7 @@ details > p {
 }
 .breadcrumbs {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   margin: 0 0 40px;
 }
 .breadcrumbs ol {
@@ -1202,12 +1202,12 @@ details > p {
   color: var(--muted);
 }
 .results-count {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   margin: 25px 0;
 }
 .data-note {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.9;
   margin: 25px 0;
@@ -1262,7 +1262,7 @@ details > p {
   gap: 15px;
   border-bottom: 1px solid var(--line);
   padding: 12px 0;
-  font-size: 11px;
+  font-size: 12px;
 }
 .spec-list dt {
   color: var(--muted);
@@ -1293,7 +1293,7 @@ details > p {
   font-size: 13px;
 }
 .photo-empty small {
-  font-size: 10px;
+  font-size: 12px;
 }
 .reviews-empty h3 {
   color: var(--text);
@@ -1317,7 +1317,7 @@ details > p {
   text-underline-offset: 4px;
 }
 .prose .data-note {
-  font-size: 11px;
+  font-size: 12px;
 }
 .prose section {
   margin-bottom: 45px;
@@ -1493,7 +1493,7 @@ details > p {
     font-size: 28px;
   }
   .stats-strip span {
-    font-size: 9px;
+    font-size: 12px;
   }
   .detail-grid {
     grid-template-columns: 1fr 1fr;
@@ -1559,7 +1559,7 @@ details > p {
     margin-bottom: 18px;
   }
   .hero .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
     margin-bottom: 20px;
   }
   .hero p {
@@ -1570,7 +1570,7 @@ details > p {
     flex-wrap: wrap;
   }
   .hero-buttons .button {
-    font-size: 11px;
+    font-size: 12px;
     padding: 12px 15px;
     gap: 10px;
   }
@@ -1581,7 +1581,7 @@ details > p {
     right: 0;
     justify-content: space-between;
     gap: 6px;
-    font-size: 8px;
+    font-size: 12px;
     margin-top: 0;
   }
   .hero-benefits svg {
@@ -1606,7 +1606,7 @@ details > p {
     font-size: 30px;
   }
   .stats-strip span {
-    font-size: 10px;
+    font-size: 12px;
   }
   .section {
     margin-top: 60px;
@@ -1619,14 +1619,14 @@ details > p {
     margin-bottom: 23px;
   }
   .section-heading .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
     margin-bottom: 12px;
   }
   .section-heading h2 {
     font-size: 32px;
   }
   .section-heading .text-link {
-    font-size: 11px;
+    font-size: 12px;
   }
   .filters {
     padding: 13px;
@@ -1637,14 +1637,14 @@ details > p {
   }
   .filter-grid label {
     flex-basis: 43%;
-    font-size: 9px;
+    font-size: 12px;
   }
   .reset-button {
     flex-basis: 43%;
-    font-size: 10px;
+    font-size: 12px;
   }
   .filter-hint {
-    font-size: 8px;
+    font-size: 12px;
     align-items: start;
   }
   .map-shell,
@@ -1656,12 +1656,12 @@ details > p {
     top: 10px;
   }
   .map-tool {
-    font-size: 9px;
+    font-size: 12px;
     gap: 4px;
     padding: 8px;
   }
   .map-legend {
-    font-size: 8px;
+    font-size: 12px;
     left: 10px;
     bottom: 25px;
     padding: 7px;
@@ -1672,7 +1672,7 @@ details > p {
     gap: 8px;
   }
   .results-heading p {
-    font-size: 9px;
+    font-size: 12px;
   }
   .station-grid {
     grid-template-columns: 1fr;
@@ -1684,7 +1684,7 @@ details > p {
   .station-card {
     padding: 20px;
   }
-  .station-title h3 {
+  .station-title :is(h2, h3) {
     font-size: 20px;
   }
   .station-top {
@@ -1692,16 +1692,16 @@ details > p {
   }
   .station-address {
     min-height: 0;
-    font-size: 11px;
+    font-size: 12px;
   }
   .station-spec {
     margin: 16px 0;
   }
   .station-bottom {
-    font-size: 9px;
+    font-size: 12px;
   }
   .station-connectors > span {
-    font-size: 10px;
+    font-size: 12px;
   }
   .city-section {
     grid-template-columns: 1fr;
@@ -1724,10 +1724,10 @@ details > p {
     font-size: 31px;
   }
   .journey-banner .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
   }
   .journey-banner .button {
-    font-size: 11px;
+    font-size: 12px;
     padding-inline: 16px;
   }
   .journey-steps {
@@ -1741,7 +1741,7 @@ details > p {
     gap: 17px 14px;
   }
   .calculator-fields label {
-    font-size: 9px;
+    font-size: 12px;
   }
   .calculator-fields input {
     font-size: 15px;
@@ -1764,7 +1764,7 @@ details > p {
     font-size: 24px;
   }
   .article-meta {
-    font-size: 11px;
+    font-size: 12px;
   }
   .faq-section {
     grid-template-columns: 1fr;
@@ -1797,14 +1797,14 @@ details > p {
   .footer-bottom {
     flex-direction: column;
     gap: 12px;
-    font-size: 9px;
+    font-size: 12px;
     margin-top: 30px;
   }
   .page {
     padding-top: 18px;
   }
   .breadcrumbs {
-    font-size: 9px;
+    font-size: 12px;
     margin-bottom: 30px;
   }
   .page-heading {
@@ -1817,7 +1817,7 @@ details > p {
     font-size: 12px;
   }
   .page-heading .eyebrow {
-    font-size: 9px;
+    font-size: 12px;
   }
   .full-map .map-shell {
     height: 70dvh;
@@ -1884,7 +1884,7 @@ details > p {
   margin: 12px 0;
 }
 .review time {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 .review-form {
@@ -1897,7 +1897,7 @@ details > p {
   display: flex;
   flex-direction: column;
   gap: 7px;
-  font-size: 11px;
+  font-size: 12px;
 }
 .review-form input,
 .review-form textarea {

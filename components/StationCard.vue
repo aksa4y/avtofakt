@@ -2,7 +2,9 @@
 import { Zap, ArrowUpRight, MapPin, Plug, Clock } from 'lucide-vue-next'
 import type { Station } from '~/types/station'
 import { stationPower, paymentLabel } from '~/utils/stations'
-defineProps<{ station: Station }>()
+withDefaults(defineProps<{ station: Station; headingLevel?: 2 | 3 }>(), {
+  headingLevel: 3,
+})
 </script>
 <template>
   <article class="station-card">
@@ -12,7 +14,7 @@ defineProps<{ station: Station }>()
       ><span class="status-dot" title="Онлайн-статус не подключён" />
     </div>
     <NuxtLink :to="`/stations/${station.slug}`" class="station-title"
-      ><h3>{{ station.name }}</h3>
+      ><component :is="`h${headingLevel}`">{{ station.name }}</component>
       <ArrowUpRight :size="21"
     /></NuxtLink>
     <p class="station-address"><MapPin :size="14" />{{ station.address }}</p>

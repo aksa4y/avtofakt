@@ -1,5 +1,16 @@
 <script setup lang="ts">
 import { Zap, ArrowUpRight, Sun, Moon, Menu, X, MapPin } from 'lucide-vue-next'
+import cyrillicFont from '@fontsource-variable/manrope/files/manrope-cyrillic-wght-normal.woff2?url'
+import latinFont from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url'
+useHead({
+  link: [cyrillicFont, latinFont].map((href) => ({
+    rel: 'preload',
+    as: 'font',
+    type: 'font/woff2',
+    crossorigin: 'anonymous',
+    href,
+  })),
+})
 const savedTheme = useCookie<'dark' | 'light'>('theme', {
   default: () => 'dark',
   sameSite: 'lax',
@@ -32,7 +43,7 @@ const links = [
     <a class="skip-link" href="#main">Перейти к содержимому</a>
     <header class="site-header">
       <div class="container header-inner">
-        <NuxtLink to="/" class="brand" aria-label="Автофакт — главная"
+        <NuxtLink to="/" class="brand" aria-label="Автофакт.by — главная"
           ><span class="brand-mark"><Zap :size="23" fill="currentColor" /></span
           >автофакт<span class="brand-by">.by</span></NuxtLink
         >

@@ -81,6 +81,17 @@ try {
     console.log('PASS', path)
   }
   const stations = await (await fetch(origin + '/api/stations')).json()
+  for (const encoding of ['gzip', 'identity', 'gzip;q=0']) {
+    const response = await fetch(origin + '/stations', {
+      headers: { 'Accept-Encoding': encoding },
+    })
+    assert.equal(
+      response.headers.get('content-encoding'),
+      encoding === 'gzip' ? 'gzip' : null,
+    )
+    assert.match(await response.text(), /Каталог станций/)
+    assert.match(response.headers.get('vary') || '', /Accept-Encoding/i)
+  }
   for (const path of internalLinks) {
     assert.equal(
       (await fetch(origin + path)).status,
